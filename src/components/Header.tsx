@@ -1,8 +1,22 @@
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 import Icon from "@/components/ui/icon"
+import { getSession, clearSession } from "@/lib/api"
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const navigate = useNavigate()
+  const session = getSession()
+
+  function handleCabinet() {
+    if (!session.token) { navigate("/auth"); return }
+    navigate(session.role === "moderator" ? "/moderator" : "/author")
+  }
+
+  function handleLogout() {
+    clearSession()
+    navigate("/")
+  }
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-border/50">
@@ -32,12 +46,25 @@ export function Header() {
 
           {/* Right side */}
           <div className="hidden md:flex items-center gap-4">
-            <button className="text-xs tracking-widest uppercase text-muted-foreground hover:text-foreground transition-colors duration-300">
-              Войти
-            </button>
-            <button className="px-5 py-2 text-xs tracking-widest uppercase font-medium transition-all duration-300 hover:opacity-90" style={{ background: "hsl(var(--crimson))", color: "white" }}>
-              Читать
-            </button>
+            {session.token ? (
+              <>
+                <button onClick={handleCabinet} className="text-xs tracking-widest uppercase text-muted-foreground hover:text-foreground transition-colors duration-300">
+                  {session.username}
+                </button>
+                <button onClick={handleLogout} className="px-5 py-2 text-xs tracking-widest uppercase font-medium transition-all duration-300 hover:opacity-90" style={{ background: "hsl(var(--crimson))", color: "white" }}>
+                  Выйти
+                </button>
+              </>
+            ) : (
+              <>
+                <button onClick={() => navigate("/auth")} className="text-xs tracking-widest uppercase text-muted-foreground hover:text-foreground transition-colors duration-300">
+                  Войти
+                </button>
+                <button onClick={() => navigate("/auth")} className="px-5 py-2 text-xs tracking-widest uppercase font-medium transition-all duration-300 hover:opacity-90" style={{ background: "hsl(var(--crimson))", color: "white" }}>
+                  Кабинет
+                </button>
+              </>
+            )}
           </div>
 
           {/* Mobile Menu Button */}
