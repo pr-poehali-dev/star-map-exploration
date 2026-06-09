@@ -3,6 +3,7 @@ const URLS = {
   titles: "https://functions.poehali.dev/bede76d5-c690-428d-9070-a03d9ee809bb",
   chapters: "https://functions.poehali.dev/5910e0a9-26f5-47ca-ae3b-b0f2d979caba",
   moderation: "https://functions.poehali.dev/f5f197dd-58ed-4b85-93a1-4e8a4b80805b",
+  comments: "https://functions.poehali.dev/9d67eac1-f209-46ac-a062-0ba3635ef659",
 }
 
 function getToken() {
@@ -41,7 +42,21 @@ export async function apiGetTitles() {
   return r.json()
 }
 
-export async function apiCreateTitle(data: { title: string; description: string; genre: string }) {
+export async function apiGetComments(chapter_id: number) {
+  const r = await fetch(`${URLS.comments}?chapter_id=${chapter_id}`)
+  return r.json()
+}
+
+export async function apiPostComment(chapter_id: number, content: string) {
+  const r = await fetch(URLS.comments, {
+    method: "POST",
+    headers: authHeaders(),
+    body: JSON.stringify({ chapter_id, content }),
+  })
+  return r.json()
+}
+
+export async function apiCreateTitle(data: { title: string; description: string; genre: string; genres: string; author_name: string; age_rating: string }) {
   const r = await fetch(URLS.titles, {
     method: "POST",
     headers: authHeaders(),

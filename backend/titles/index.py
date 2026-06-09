@@ -1,4 +1,4 @@
-"""Управление тайтлами: создание, получение списка тайтлов автора."""
+"""Управление тайтлами манги: создание, получение списка тайтлов автора."""
 import json
 import os
 import psycopg2
@@ -43,12 +43,12 @@ def handler(event: dict, context) -> dict:
         conn = get_conn()
         cur = conn.cursor()
         cur.execute(
-            f"SELECT id, title, description, genre, cover_url, status, created_at FROM {SCHEMA}.titles WHERE author_id = {user_id} ORDER BY created_at DESC"
+            f"SELECT id, title, description, genre, genres, author_name, age_rating, cover_url, status, created_at FROM {SCHEMA}.titles WHERE author_id = {user_id} ORDER BY created_at DESC"
         )
         rows = cur.fetchall()
         conn.close()
 
-        titles = [{"id": r[0], "title": r[1], "description": r[2], "genre": r[3], "cover_url": r[4], "status": r[5], "created_at": str(r[6])} for r in rows]
+        titles = [{"id": r[0], "title": r[1], "description": r[2], "genre": r[3], "genres": r[4], "author_name": r[5], "age_rating": r[6], "cover_url": r[7], "status": r[8], "created_at": str(r[9])} for r in rows]
         return {"statusCode": 200, "headers": CORS_HEADERS, "body": json.dumps({"titles": titles})}
 
     # POST /titles — создать тайтл
@@ -64,18 +64,27 @@ def handler(event: dict, context) -> dict:
         title = body.get("title", "").strip()
         description = body.get("description", "").strip()
         genre = body.get("genre", "").strip()
+        genres = body.get("genres", "").strip()
+        author_name = body.get("author_name", "").strip()
+        age_rating = body.get("age_rating", "12+").strip()
 
         if not title:
             return {"statusCode": 400, "headers": CORS_HEADERS, "body": json.dumps({"error": "Название обязательно"})}
+        if not author_name:
+            return {"statusCode": 400, "headers": CORS_HEADERS, "body": json.dumps({"error": "Имя автора обязательно"})}
 
         title_esc = title.replace("'", "''")
         description_esc = description.replace("'", "''")
         genre_esc = genre.replace("'", "''")
+        genres_esc = genres.replace("'", "''")
+        author_name_esc = author_name.replace("'", "''")
+        age_rating_esc = age_rating.replace("'", "''")
 
         conn = get_conn()
         cur = conn.cursor()
         cur.execute(
-            f"INSERT INTO {SCHEMA}.titles (author_id, title, description, genre) VALUES ({user_id}, '{title_esc}', '{description_esc}', '{genre_esc}') RETURNING id"
+            f"INSERT INTO {SCHEMA}.titles (author_id, title, description, genre, genres, author_name, age_rating) "
+            f"VALUES ({user_id}, '{title_esc}', '{description_esc}', '{genre_esc}', '{genres_esc}', '{author_name_esc}', '{age_rating_esc}') RETURNING id"
         )
         title_id = cur.fetchone()[0]
         conn.commit()

@@ -1,0 +1,11 @@
+{
+  "tests": [
+    {
+      "name": "GET comments without chapter_id returns 400",
+      "method": "GET",
+      "path": "/",
+      "expectedStatus": 400,
+      "bodyMatcher": "partial"
+    }
+  ]
+}
