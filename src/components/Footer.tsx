@@ -46,6 +46,7 @@ export function Footer() {
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-8 border-t border-border">
           <p className="text-xs text-muted-foreground">© 2025 МангаДжун. Все права защищены.</p>
           <p className="text-xs text-muted-foreground">Сделано с любовью к аниме и манге</p>
+          <a href="mailto:Fox7uig.a@gmail.com" className="text-xs text-muted-foreground hover:text-foreground transition-colors duration-300">Fox7uig.a@gmail.com</a>
         </div>
 
       </div>
