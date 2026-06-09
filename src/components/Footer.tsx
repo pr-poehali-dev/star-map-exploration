@@ -14,7 +14,7 @@ export function Footer() {
           <div className="col-span-2 md:col-span-1">
             <div className="flex items-center gap-1 mb-4">
               <span className="font-serif text-2xl text-foreground">Манга</span>
-              <span className="font-serif text-2xl" style={{ color: "hsl(var(--crimson))" }}>Дом</span>
+              <span className="font-serif text-2xl" style={{ color: "hsl(var(--crimson))" }}>Джун</span>
             </div>
             <p className="text-sm text-muted-foreground leading-relaxed mb-6 max-w-xs">
               Лучшая платформа для чтения манги, манхвы и манхуа на русском языке.
@@ -44,7 +44,7 @@ export function Footer() {
         </div>
 
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-8 border-t border-border">
-          <p className="text-xs text-muted-foreground">© 2025 МангаДом. Все права защищены.</p>
+          <p className="text-xs text-muted-foreground">© 2025 МангаДжун. Все права защищены.</p>
           <p className="text-xs text-muted-foreground">Сделано с любовью к аниме и манге</p>
         </div>
 

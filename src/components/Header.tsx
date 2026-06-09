@@ -11,7 +11,7 @@ export function Header() {
           {/* Logo */}
           <a href="/" className="flex items-center gap-2">
             <span className="font-serif text-2xl tracking-wide text-foreground">Манга</span>
-            <span className="font-serif text-2xl tracking-wide" style={{ color: "hsl(var(--crimson))" }}>Дом</span>
+            <span className="font-serif text-2xl tracking-wide" style={{ color: "hsl(var(--crimson))" }}>Джун</span>
           </a>
 
           {/* Desktop Navigation */}
