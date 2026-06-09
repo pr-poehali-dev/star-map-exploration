@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap&subset=cyrillic,cyrillic-ext,latin,latin-ext');
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap&subset=cyrillic,cyrillic-ext,latin,latin-ext");
 
 @tailwind base;
 @tailwind components;
@@ -6,97 +6,52 @@
 
 @layer base {
   :root {
-    /* Japandi color palette - warm naturals with muted accents */
-    --background: 40 20% 96%;
-    --foreground: 30 15% 15%;
+    /* Dark manga palette */
+    --background: 224 15% 8%;
+    --foreground: 220 15% 92%;
 
-    --card: 40 15% 98%;
-    --card-foreground: 30 15% 15%;
+    --card: 224 15% 11%;
+    --card-foreground: 220 15% 92%;
 
-    --popover: 40 15% 98%;
-    --popover-foreground: 30 15% 15%;
+    --popover: 224 15% 11%;
+    --popover-foreground: 220 15% 92%;
 
-    --primary: 150 30% 25%;
-    --primary-foreground: 40 15% 98%;
+    --primary: 350 80% 55%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 40 15% 92%;
-    --secondary-foreground: 30 15% 15%;
+    --secondary: 224 12% 16%;
+    --secondary-foreground: 220 15% 85%;
 
-    --muted: 40 12% 90%;
-    --muted-foreground: 30 8% 45%;
+    --muted: 224 12% 16%;
+    --muted-foreground: 220 8% 55%;
 
-    --accent: 25 50% 55%;
-    --accent-foreground: 40 15% 98%;
+    --accent: 35 90% 55%;
+    --accent-foreground: 224 15% 8%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 40 15% 88%;
-    --input: 40 15% 88%;
-    --ring: 150 30% 25%;
+    --border: 224 12% 18%;
+    --input: 224 12% 18%;
+    --ring: 350 80% 55%;
 
-    --radius: 0.25rem;
+    --radius: 0.375rem;
 
-    /* Custom Japandi tokens */
-    --sand: 40 20% 92%;
-    --sage: 150 30% 25%;
-    --terracotta: 25 50% 55%;
-    --indigo: 260 30% 35%;
-    --stone: 40 8% 70%;
+    /* Custom manga tokens */
+    --crimson: 350 80% 55%;
+    --gold: 35 90% 55%;
+    --midnight: 224 20% 6%;
+    --surface: 224 15% 11%;
+    --surface-hover: 224 15% 14%;
 
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-
-  .dark {
-    --background: 30 15% 10%;
-    --foreground: 40 15% 92%;
-
-    --card: 30 15% 12%;
-    --card-foreground: 40 15% 92%;
-
-    --popover: 30 15% 12%;
-    --popover-foreground: 40 15% 92%;
-
-    --primary: 150 25% 45%;
-    --primary-foreground: 30 15% 10%;
-
-    --secondary: 30 12% 18%;
-    --secondary-foreground: 40 15% 92%;
-
-    --muted: 30 12% 18%;
-    --muted-foreground: 40 10% 65%;
-
-    --accent: 25 40% 45%;
-    --accent-foreground: 30 15% 10%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 30 12% 22%;
-    --input: 30 12% 22%;
-    --ring: 150 25% 45%;
-
-    --sand: 30 12% 22%;
-    --sage: 150 25% 45%;
-    --terracotta: 25 40% 45%;
-    --indigo: 260 25% 40%;
-    --stone: 30 8% 35%;
-
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-background: 224 15% 8%;
+    --sidebar-foreground: 220 15% 92%;
+    --sidebar-primary: 350 80% 55%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-accent: 224 12% 16%;
+    --sidebar-accent-foreground: 220 15% 92%;
+    --sidebar-border: 224 12% 18%;
+    --sidebar-ring: 350 80% 55%;
   }
 }
 
@@ -109,7 +64,6 @@
     @apply bg-background text-foreground font-sans antialiased;
   }
 
-  /* Smooth scrolling for Japandi feel */
   html {
     scroll-behavior: smooth;
   }
