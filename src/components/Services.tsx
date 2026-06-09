@@ -73,7 +73,7 @@ export function Services() {
             >
               <div className="relative overflow-hidden aspect-[3/4] mb-3" style={{ borderRadius: "var(--radius)" }}>
                 <img src={manga.cover} alt={manga.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent pointer-events-none" />
 
                 {manga.isNew && (
                   <div className="absolute top-2 left-2 px-2 py-0.5 text-xs font-medium text-white" style={{ background: "hsl(var(--crimson))", borderRadius: "3px" }}>
@@ -88,7 +88,7 @@ export function Services() {
                   </div>
                 </div>
 
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ background: "hsl(0 0% 0% / 0.4)" }}>
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" style={{ background: "hsl(0 0% 0% / 0.4)" }}>
                   <div className="p-3" style={{ background: "hsl(var(--crimson))", borderRadius: "50%" }}>
                     <Icon name="BookOpen" size={16} className="text-white" />
                   </div>

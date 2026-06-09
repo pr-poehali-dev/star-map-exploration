@@ -28,8 +28,8 @@ export function Hero() {
   return (
     <section className="relative min-h-screen flex items-center px-6 lg:px-12 pt-16 overflow-hidden">
       {/* Background */}
-      <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse at 60% 50%, hsl(350 80% 55% / 0.08) 0%, transparent 70%), hsl(var(--midnight))" }} />
-      <div className="absolute inset-0" style={{ backgroundImage: "radial-gradient(hsl(var(--border)) 1px, transparent 1px)", backgroundSize: "40px 40px", opacity: 0.3 }} />
+      <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 60% 50%, hsl(350 80% 55% / 0.08) 0%, transparent 70%), hsl(var(--midnight))" }} />
+      <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: "radial-gradient(hsl(var(--border)) 1px, transparent 1px)", backgroundSize: "40px 40px", opacity: 0.3 }} />
 
       <div className="relative z-10 max-w-7xl mx-auto w-full py-20">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -82,7 +82,7 @@ export function Hero() {
                     <div className="absolute bottom-3 left-3 right-3">
                       <StarRating rating={manga.rating} />
                     </div>
-                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ background: "hsl(var(--crimson) / 0.15)" }}>
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" style={{ background: "hsl(var(--crimson) / 0.15)" }}>
                       <div className="p-3 rounded-full" style={{ background: "hsl(var(--crimson))" }}>
                         <Icon name="BookOpen" size={18} className="text-white" />
                       </div>
